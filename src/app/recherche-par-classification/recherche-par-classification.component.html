@@ -1,0 +1,73 @@
+<div class="container">
+  <div class="col-sm-4 col-md-4 col-lg-4 mb-4">
+    <label>Classifications</label>
+    <input
+      class="form-control form-control-lg"
+      id="idCla"
+      name="idCla"
+      [(ngModel)]="IdClassification"
+      (change)="onChange()"
+    />
+  </div>
+  <div class="card shadow mb-4">
+    <div class="card-body">
+      <table class="table table-striped">
+        <tr>
+          <th>
+            Id <img src="/assets/rob44.png" alt="rb44" width="25" height="35" />
+          </th>
+          <th>
+            Nom du Robot
+            <img src="/assets/rob55.png" alt="rb55" width="25" height="35" />
+          </th>
+          <th>
+            Nom du Developpeur
+            <img src="/assets/rob66.png" alt="rb66" width="25" height="35" />
+          </th>
+          <th>
+            Prix
+            <img src="/assets/rob77.png" alt="rb77" width="25" height="35" />
+          </th>
+          <th>
+            Date Création
+            <img src="/assets/rob33.png" alt="rb33" width="25" height="35" />
+          </th>
+          <th>
+            Classification
+            <img src="/assets/rob88.png" alt="rb88" width="40" height="40" />
+          </th>
+        </tr>
+        <tbody *ngFor="let robot of robots">
+          <tr>
+            <td>{{ robot.idRobot }}</td>
+            <td>{{ robot.nomRobot }}</td>
+            <td>{{ robot.nomDev }}</td>
+            <td>{{ robot.prixRobot }}</td>
+            <td>{{ robot.dateCreation | date: "dd/MM/yyyy" }}</td>
+            <td>{{ robot.classification.nomCla }}</td>
+            <td>
+              <a
+                *ngIf="authService.isAdmin()"
+                class="btn btn-danger"
+                (click)="supprimerRobot(robot)"
+                >Supprimer</a
+              >
+            </td>
+            <td>
+              <a
+                *ngIf="authService.isAdmin()"
+                class="btn btn-success"
+                [routerLink]="['/updateRobot', robot.idRobot]"
+                >Modifier</a
+              >
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <br /><br /><br />
+  <div style="text-align: center">
+    <img src="/assets/rob1.jpg" alt="image robot" />
+  </div>
+</div>

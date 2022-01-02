@@ -1,0 +1,77 @@
+<div class="container">
+  <div>
+    <h2>Ajouter un Robot :</h2>
+  </div>
+
+  <form>
+    <div class="col-sm-2 col-md-2 col-lg-2">
+      <label>ID Robot</label>
+      <input
+        type="text"
+        [(ngModel)]="newRobot.idRobot"
+        name="idRobot"
+        class="form-control"
+      />
+    </div>
+
+    <div class="col-sm-4 col-md-4 col-lg-4">
+      <label>Nom Robot</label>
+      <input
+        type="text"
+        [(ngModel)]="newRobot.nomRobot"
+        name="nomRobot"
+        class="form-control"
+      />
+    </div>
+
+    <div class="col-sm-4 col-md-4 col-lg-4">
+      <label>Nom Developpeur</label>
+      <input
+        type="text"
+        [(ngModel)]="newRobot.nomDev"
+        name="nomDev"
+        class="form-control"
+      />
+    </div>
+
+    <div class="col-sm-2 col-md-2 col-lg-2">
+      <label>Prix Robot</label>
+      <input
+        type="number"
+        [(ngModel)]="newRobot.prixRobot"
+        name="prixRobot"
+        class="form-control"
+      />
+    </div>
+
+    <div class="col-sm-4 col-md-4 col-lg-4">
+      <label>Date création</label>
+      <input
+        type="date"
+        [(ngModel)]="newRobot.dateCreation"
+        name="dateCreation"
+        class="form-control"
+      />
+    </div>
+    <br />
+    <div class="col-sm-4 col-md-4 col-lg-4">
+      <label>Classification</label>
+      <select
+        class="form-control form-control-lg"
+        id="idCla"
+        name="idCla"
+        [(ngModel)]="newIdCla"
+      >
+        <option *ngFor="let cla of classifications" [value]="cla.idCla">
+          {{ cla.nomCla }}
+        </option>
+      </select>
+    </div>
+    <br />
+    <div class="mt-2">
+      <button type="submit" (click)="addRobot()" class="btn btn-success">
+        Ajouter
+      </button>
+    </div>
+  </form>
+</div>

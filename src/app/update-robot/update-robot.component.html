@@ -1,0 +1,85 @@
+<div class="container d-flex">
+  <section class="col-7">
+    <div>
+      <h2>Modifier un Robot :</h2>
+    </div>
+
+    <form *ngIf="currentRobot">
+      <div class="col-sm-2 col-md-2 col-lg-2">
+        <label>ID Robot</label>
+        <input
+          Readonly
+          type="text"
+          [(ngModel)]="currentRobot.idRobot"
+          name="idRobot"
+          class="form-control"
+        />
+      </div>
+
+      <div class="col-sm-4 col-md-4 col-lg-4">
+        <label>Nom Robot</label>
+        <input
+          type="text"
+          [(ngModel)]="currentRobot.nomRobot"
+          name="nomRobot"
+          class="form-control"
+        />
+      </div>
+
+      <div class="col-sm-4 col-md-4 col-lg-4">
+        <label>Nom du Developpeur</label>
+        <input
+          type="text"
+          [(ngModel)]="currentRobot.nomDev"
+          name="nomDev"
+          class="form-control"
+        />
+      </div>
+
+      <div class="col-sm-2 col-md-2 col-lg-2">
+        <label>Prix Robot</label>
+        <input
+          type="number"
+          [(ngModel)]="currentRobot.prixRobot"
+          name="prixRobot"
+          class="form-control"
+        />
+      </div>
+
+      <div class="col-sm-4 col-md-4 col-lg-4">
+        <label>Date création</label>
+        <input
+          type="date"
+          [ngModel]="currentRobot.dateCreation | date: 'yyyy-MM-dd'"
+          (ngModelChange)="currentRobot.dateCreation = $event"
+          name="dateCreation"
+          class="form-control"
+        />
+      </div>
+      <br />
+      <div class="col-sm-4 col-md-4 col-lg-4">
+        <label>Classification</label>
+        <select
+          class="form-control form-control-lg"
+          id="idCla"
+          name="idCla"
+          [(ngModel)]="currentRobot.classification.idCla"
+        >
+          <option *ngFor="let cla of classifications" [value]="cla.idCla">
+            {{ cla.nomCla }}
+          </option>
+        </select>
+      </div>
+      <br />
+      <div class="mt-2">
+        <button type="submit" (click)="updateRobot()" class="btn btn-success">
+          Modifier
+        </button>
+      </div>
+    </form>
+  </section>
+
+  <section class="col-5">
+    <img height="800" width="800" src="/assets/rob22.png" alt="mod mod" />
+  </section>
+</div>
